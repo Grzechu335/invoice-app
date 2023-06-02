@@ -82,7 +82,7 @@
 
 @layer utilities {
     .heading-lg {
-        @apply text-[36px] leading-[33px] tracking-[-1px] font-bold;
+        @apply text-[36px] leading-[33px] tracking-[-1px] font-bold text-color-8 dark:text-white;
     }
     .heading-md {
         @apply text-[24px] leading-[22px] tracking-[0.75px] font-bold;
@@ -94,6 +94,6 @@
         @apply text-[15px] leading-[15px] tracking-[-0.25px] font-bold;
     }
     .body-variant {
-        @apply text-[13px] leading-[15px] tracking-[-0.25px] font-medium;
+        @apply text-[13px] leading-[15px] tracking-[-0.25px] font-medium text-color-7 dark:text-white;
     }
 }

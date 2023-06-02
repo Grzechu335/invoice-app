@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 type Props = {}
 
-const ThemeToggler: React.FC = (props: Props) => {
+const ThemeToggler: React.FC = () => {
     const { theme, setTheme } = useTheme()
     const [mounted, setMounded] = useState(false)
     useEffect(() => {
