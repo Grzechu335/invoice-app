@@ -1,5 +1,5 @@
 'use client'
-import React, { ChangeEvent, createContext, useContext, useState } from 'react'
+import React, { ChangeEvent, createContext, useMemo, useState } from 'react'
 
 // Define type of context value
 export type FilterContextType = {
@@ -36,15 +36,15 @@ export const FilterContextProvider: React.FC<{ children: React.ReactNode }> = ({
             [e.target.value]: e.target.checked,
         }))
     }
+    const data = useMemo(
+        () => ({
+            filters: filterTags,
+            changeFilterTags,
+        }),
+        [filterTags]
+    )
     return (
-        <FilterContext.Provider
-            value={{
-                filters: filterTags,
-                changeFilterTags,
-            }}
-        >
-            {children}
-        </FilterContext.Provider>
+        <FilterContext.Provider value={data}>{children}</FilterContext.Provider>
     )
 }
 

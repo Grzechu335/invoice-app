@@ -1,7 +1,6 @@
 import Image from 'next/image'
-import React from 'react'
-import { MouseEventHandler } from 'react'
 import PlusIcon from 'public/assets/icon-plus.svg'
+import React, { MouseEventHandler } from 'react'
 
 type CustomButtonProps = {
     children?: React.ReactNode

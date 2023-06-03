@@ -1,8 +1,7 @@
 import InvoiceItem from '@/components/organisms/InvoiceItem'
+import EmptyInvoiceTemplate from '@/components/templates/EmptyInvoiceTemplate'
 import React from 'react'
 import { Invoice } from '../../../../types/invoice'
-import Image from 'next/image'
-import EmptyInvoiceTemplate from '@/components/templates/EmptyInvoiceTemplate'
 
 type InvoicesLayoutProps = {
     invoices: Invoice[]

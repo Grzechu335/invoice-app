@@ -1,7 +1,6 @@
+import InvoicePersonalData from '@/components/molecules/InvoicePersonalData'
 import React from 'react'
 import { Invoice } from '../../../../types/invoice'
-import currencyFormatter from '../../../../utils/currencyFormatter'
-import InvoicePersonalData from '@/components/molecules/InvoicePersonalData'
 import InvoiceItems from '../InvoiceItems'
 
 const InvoiceDetails: React.FC<{ invoice: Invoice }> = ({ invoice }) => {
