@@ -19,6 +19,18 @@ module.exports = {
             gridTemplateAreas: {
                 invoiceListWide: ['id date name total status'],
                 invoiceListSmall: ['id name', 'date status', 'total status'],
+                invoiceDetailsWide: [
+                    'id . . sender',
+                    'invoiceDate client mail mail',
+                    'paymentDue client . .',
+                ],
+                invoiceDetailsSmall: [
+                    'id .',
+                    'sender .',
+                    'invoiceDate client',
+                    'paymentDue client',
+                    'mail mail',
+                ],
             },
             fontFamily: {
                 sans: ['var(--font-league)'],
@@ -33,7 +45,7 @@ module.exports = {
                 'color-7': '#7e88c3',
                 'color-8': '#0c0e16',
                 'color-9': '#ec5757',
-                'color-10': '#9277ff',
+                'color-10': '#ff9797',
                 'color-11': '#f8f8fb',
                 'color-12': '#141625',
                 border: 'hsl(var(--border))',

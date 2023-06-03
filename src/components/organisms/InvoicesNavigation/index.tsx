@@ -1,4 +1,4 @@
-import AddInvoiceButton from '@/components/atoms/AddInvoiceButton'
+import CustomButton from '@/components/atoms/CustomButton'
 import FilterInvoice from '@/components/molecules/FilterInvoice'
 import React from 'react'
 
@@ -6,7 +6,7 @@ type InvoicesNavigationProps = { qty: number }
 
 const InvoicesNavigation: React.FC<InvoicesNavigationProps> = ({ qty }) => {
     return (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-[55px]">
             <div className="text-color-6 text-[13px] flex flex-col space-y-[6px] leading-[15px] tracking-[-0.1px]">
                 <h1 className="heading-lg">Invoices</h1>
                 {qty !== 0 ? (
@@ -24,7 +24,12 @@ const InvoicesNavigation: React.FC<InvoicesNavigationProps> = ({ qty }) => {
                 <div className="relative flex items-center">
                     <FilterInvoice />
                 </div>
-                <AddInvoiceButton />
+                <CustomButton variant={1}>
+                    <p className="mr-2 heading-sm-variant">
+                        <span className="hidden md:inline ">New </span>
+                        Invoice
+                    </p>
+                </CustomButton>
             </div>
         </div>
     )

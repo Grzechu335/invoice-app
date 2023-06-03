@@ -11,7 +11,7 @@ const FilterInvoice: React.FC = () => {
         <>
             <button
                 onClick={() => setOpen((prev) => !prev)}
-                className="heading-sm-variant flex items-center space-x-[14px] cursor-pointer"
+                className="heading-sm-variant flex items-center space-x-[14px] cursor-pointer "
             >
                 <p>
                     Filter <span className="hidden md:inline">by status</span>
@@ -26,7 +26,7 @@ const FilterInvoice: React.FC = () => {
                 />
             </button>
             {open && (
-                <div className="absolute bg-color-4 rounded-[8px] top-[55px] left-0 w-[300%] md:w-[150%] transform translate-x-[-25%] p-6 heading-sm-variant grid gap-4">
+                <div className="absolute bg-white dark:bg-color-4 shadow-lg rounded-[8px] top-[55px] left-0 w-[300%] md:w-[150%] transform translate-x-[-25%] p-6 heading-sm-variant grid gap-4">
                     <label className="flex space-x-[13px] items-center">
                         <input
                             type="checkbox"

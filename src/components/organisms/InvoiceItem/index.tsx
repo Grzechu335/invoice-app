@@ -15,7 +15,7 @@ const InvoiceItem: React.FC<Invoice> = ({
     const router = useRouter()
     return (
         <div
-            onClick={() => router.push(id)}
+            onClick={() => router.push(`invoice/${id}`)}
             className="shadow-md body-variant grid p-[32px] bg-white dark:bg-color-3 rounded-[8px] cursor-pointer grid-areas-invoiceListSmall md:grid-areas-invoiceListWide grid-cols-[1fr_1fr] grid-rows-[1fr_1fr_1fr] md:grid-rows-1 md:grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-[9px] md:gap-[65px]"
         >
             <p className="flex items-center font-bold uppercase text-color-8 dark:text-white grid-in-id">

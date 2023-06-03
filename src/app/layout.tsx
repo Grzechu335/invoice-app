@@ -24,7 +24,11 @@ export default function RootLayout({
             <body className={leagueSpartan.variable}>
                 <Providers>
                     <Sidebar />
-                    {children}
+                    <div className="grid md:grid-cols-12">
+                        <div className="md:col-start-3 px-6 md:px-0 md:col-end-11 xl:mt-[77px] md:mt-[140px] mt-[100px] pb-10">
+                            {children}
+                        </div>
+                    </div>
                 </Providers>
             </body>
         </html>
