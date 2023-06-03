@@ -1,4 +1,5 @@
 'use client'
+import { FilterContextProvider } from '@/context/FilterContext'
 import { ThemeProvider } from 'next-themes'
 import React from 'react'
 
@@ -13,7 +14,7 @@ const Providers: React.FC<ProvidersProps> = ({ children }) => {
             defaultTheme="system"
             attribute="class"
         >
-            {children}
+            <FilterContextProvider>{children}</FilterContextProvider>
         </ThemeProvider>
     )
 }

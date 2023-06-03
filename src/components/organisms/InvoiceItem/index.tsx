@@ -1,9 +1,9 @@
+'use client'
 import React from 'react'
 import { Invoice } from '../../../../types/invoice'
 import InvoiceStatus from '@/components/molecules/InvoiceStatus'
 import currencyFormatter from '../../../../utils/currencyFormatter'
-
-type Props = {}
+import { useRouter } from 'next/navigation'
 
 const InvoiceItem: React.FC<Invoice> = ({
     id,
@@ -12,15 +12,23 @@ const InvoiceItem: React.FC<Invoice> = ({
     status,
     paymentDue,
 }) => {
+    const router = useRouter()
     return (
-        <div className="shadow-md body-variant grid grid-cols-12 p-[32px] bg-white dark:bg-color-3 rounded-[8px]">
-            <p className="font-bold uppercase text-color-8 dark:text-white">
+        <div
+            onClick={() => router.push(id)}
+            className="shadow-md body-variant grid p-[32px] bg-white dark:bg-color-3 rounded-[8px] cursor-pointer grid-areas-invoiceListSmall md:grid-areas-invoiceListWide grid-cols-[1fr_1fr] grid-rows-[1fr_1fr_1fr] md:grid-rows-1 md:grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-[9px] md:gap-[65px]"
+        >
+            <p className="flex items-center font-bold uppercase text-color-8 dark:text-white grid-in-id">
                 <span className="text-color-7">#</span>
                 {id}
             </p>
-            <p className="!text-[#858BB2] dark:text-white">Due {paymentDue}</p>
-            <p>{clientName}</p>
-            <p className="font-bold text-black dark:text-white">
+            <p className="!text-[#858BB2] dark:text-white grid-in-date flex items-center">
+                Due {paymentDue}
+            </p>
+            <p className="flex items-center justify-end md:justify-start grid-in-name">
+                {clientName}
+            </p>
+            <p className="flex items-center justify-start font-bold text-black md:justify-end dark:text-white grid-in-total">
                 {currencyFormatter(total)}
             </p>
             {/* @ts-ignore */}

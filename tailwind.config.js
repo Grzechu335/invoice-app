@@ -16,6 +16,10 @@ module.exports = {
             },
         },
         extend: {
+            gridTemplateAreas: {
+                invoiceListWide: ['id date name total status'],
+                invoiceListSmall: ['id name', 'date status', 'total status'],
+            },
             fontFamily: {
                 sans: ['var(--font-league)'],
             },
@@ -87,5 +91,8 @@ module.exports = {
             },
         },
     },
-    plugins: [require('tailwindcss-animate')],
+    plugins: [
+        require('tailwindcss-animate'),
+        require('@savvywombat/tailwindcss-grid-areas'),
+    ],
 }

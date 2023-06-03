@@ -12,7 +12,7 @@ const InvoiceStatus: React.FC<InvoiceStatusProps> = ({ status }) => {
     }
     return (
         <div
-            className={`rounded-[6px] w-full bg-opacity-5 py-[14px] grid place-content-center ${colors[status]}`}
+            className={`rounded-[6px] grid-in-status w-full bg-opacity-5 px-4 py-[14px] grid place-content-center ${colors[status]}`}
         >
             <div className="flex items-center space-x-2">
                 <span

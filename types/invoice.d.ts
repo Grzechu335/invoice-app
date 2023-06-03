@@ -6,7 +6,7 @@ export interface Invoice {
     paymentTerms: number
     clientName: string
     clientEmail: string
-    status: string
+    status: 'paid' | 'pending' | 'draft'
     senderAddress: Address
     clientAddress: Address
     items: Item[]
