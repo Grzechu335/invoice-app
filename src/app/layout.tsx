@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={leagueSpartan.variable}>
+            <body className={`${leagueSpartan.variable} relative`}>
                 <Providers>
                     <Sidebar />
                     <div className="grid md:grid-cols-12">

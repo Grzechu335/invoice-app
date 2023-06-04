@@ -1,5 +1,6 @@
 'use client'
 import GoBackButton from '@/components/atoms/GoBackButton'
+import Modals from '@/components/modals'
 import InvoiceDetails from '@/components/organisms/InvoiceDetails'
 import InvoiceSettings from '@/components/organisms/InvoiceSettings'
 import { invoices } from '@data/data'
@@ -12,6 +13,7 @@ export default function Page() {
             <GoBackButton />
             <InvoiceSettings status={invoice.status} />
             <InvoiceDetails invoice={invoice} />
+            <Modals invoice={invoice} />
         </main>
     )
 }
