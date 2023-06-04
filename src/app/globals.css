@@ -94,6 +94,6 @@
         @apply text-[15px] leading-[15px] tracking-[-0.25px] font-bold;
     }
     .body-variant {
-        @apply text-[13px] leading-[15px] tracking-[-0.25px] font-medium text-color-7 dark:text-white;
+        @apply text-[13px] leading-[15px] tracking-[-0.25px] font-medium;
     }
 }
