@@ -21,7 +21,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={`${leagueSpartan.variable} relative`}>
+            <body
+                className={`${leagueSpartan.variable} overflow-x-hidden scrollbar-none`}
+            >
                 <Providers>
                     <Sidebar />
                     <div className="grid md:grid-cols-12">

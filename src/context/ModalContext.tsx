@@ -1,5 +1,5 @@
 'use client'
-import React, { ChangeEvent, createContext, useMemo, useState } from 'react'
+import React, { createContext, useMemo, useState } from 'react'
 
 // Define type of context value
 export type ModalContextType = {
@@ -9,6 +9,7 @@ export type ModalContextType = {
     toggleEditModal: () => void
     toggleNewModal: () => void
     toggleDeleteModal: () => void
+    closeAllModals: () => void
 }
 
 // Create context with default values
@@ -19,6 +20,7 @@ const ModalContext = createContext<ModalContextType>({
     toggleEditModal: () => {},
     toggleNewModal: () => {},
     toggleDeleteModal: () => {},
+    closeAllModals: () => {},
 })
 
 // Create Context Provider
@@ -38,6 +40,12 @@ export const ModalContextProvider: React.FC<{ children: React.ReactNode }> = ({
         setDeleteModal((prev) => !prev)
     }
 
+    const closeAllModals = () => {
+        setEditModal(false)
+        setNewModal(false)
+        setDeleteModal(false)
+    }
+
     const data = useMemo(
         () => ({
             editModal,
@@ -46,6 +54,7 @@ export const ModalContextProvider: React.FC<{ children: React.ReactNode }> = ({
             toggleEditModal,
             toggleNewModal,
             toggleDeleteModal,
+            closeAllModals,
         }),
         [deleteModal, newModal, editModal]
     )

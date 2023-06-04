@@ -31,6 +31,28 @@ module.exports = {
                     'paymentDue client',
                     'mail mail',
                 ],
+                billFromWide: [
+                    'senderStreet senderStreet senderStreet',
+                    'senderCity senderPostCode senderCountry',
+                ],
+                billFromSmall: [
+                    'senderStreet senderStreet',
+                    'senderCity senderPostCode',
+                    'senderCountry senderCountry',
+                ],
+                billToWide: [
+                    'clientName clientName clientName ',
+                    'clientEmail clientEmail clientEmail ',
+                    'clientStreet clientStreet clientStreet ',
+                    'clientCity clientPostCode clientCountry',
+                ],
+                billToSmall: [
+                    'clientName clientName',
+                    'clientEmail clientEmail',
+                    'clientStreet clientStreet',
+                    'clientCity clientPostCode',
+                    'clientCountry clientCountry',
+                ],
             },
             fontFamily: {
                 sans: ['var(--font-league)'],
@@ -106,5 +128,6 @@ module.exports = {
     plugins: [
         require('tailwindcss-animate'),
         require('@savvywombat/tailwindcss-grid-areas'),
+        require('tailwind-scrollbar'),
     ],
 }

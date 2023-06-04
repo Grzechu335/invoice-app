@@ -7,6 +7,7 @@ type CustomButtonProps = {
     variant: 1 | 2 | 3 | 4 | 5 | 6
     className?: string
     onClick?: MouseEventHandler
+    smallFont?: boolean
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -14,6 +15,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     variant,
     className,
     onClick,
+    smallFont = false,
 }) => {
     const Variants: Record<1 | 2 | 3 | 4 | 5 | 6, string> = {
         1: 'bg-color-1 text-[#fff] hover:bg-color-2 !p-2',
@@ -26,7 +28,9 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     return (
         <button
             onClick={onClick}
-            className={`heading-sm-variant py-4 px-6 flex items-center rounded-full ${Variants[variant]} ${className}`}
+            className={`md:heading-sm-variant py-4 px-6 flex items-center rounded-full ${
+                smallFont ? 'text-[12px] leading-[12px]' : 'heading-sm-variant'
+            } ${Variants[variant]} ${className}`}
         >
             {variant === 1 ? (
                 <div className="grid w-8 h-8 mr-4 bg-white rounded-full place-content-center">

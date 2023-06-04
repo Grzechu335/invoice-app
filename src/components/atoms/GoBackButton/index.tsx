@@ -1,15 +1,20 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import Arrow from 'public/assets/icon-arrow-left.svg'
 import Image from 'next/image'
 
-const GoBackButton: React.FC = () => {
+type GoBackButtonProps = {
+    className?: string
+    onClick?: MouseEventHandler<HTMLButtonElement>
+}
+
+const GoBackButton: React.FC<GoBackButtonProps> = ({ className, onClick }) => {
     const router = useRouter()
     return (
         <button
-            className="heading-sm-variant text-color-8 dark:text-[#fff] flex items-center space-x-[22px]"
-            onClick={() => router.back()}
+            className={`heading-sm-variant text-color-8 dark:text-[#fff] flex items-center space-x-[22px] ${className}`}
+            onClick={onClick ? onClick : () => router.back()}
         >
             <Image
                 src={Arrow}

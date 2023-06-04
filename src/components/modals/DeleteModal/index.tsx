@@ -1,7 +1,7 @@
 'use client'
 import CustomButton from '@/components/atoms/CustomButton'
 import useModalContext from '@/hooks/useModalContext'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 type DeleteModalProps = {
     id: string
@@ -9,6 +9,12 @@ type DeleteModalProps = {
 
 const DeleteModal: React.FC<DeleteModalProps> = ({ id }) => {
     const { toggleDeleteModal } = useModalContext()
+    useEffect(() => {
+        document.body.style.overflow = 'hidden'
+        return () => {
+            document.body.style.overflow = 'auto'
+        }
+    })
     return (
         <div className="fixed top-0 left-0 grid w-screen h-screen bg-black/50 place-content-center">
             <div className="flex flex-col p-12 space-y-6 md:space-y-3 bg-white rounded-[8px] dark:bg-color-3 md:mx-0 mx-6">

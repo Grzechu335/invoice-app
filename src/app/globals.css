@@ -85,7 +85,7 @@
         @apply text-[36px] leading-[33px] tracking-[-1px] font-bold text-color-8 dark:text-white;
     }
     .heading-md {
-        @apply text-[24px] leading-[22px] tracking-[0.75px] font-bold;
+        @apply text-[24px] leading-[22px] tracking-[-0.75px] font-bold;
     }
     .heading-sm {
         @apply text-[15px] leading-[24px] tracking-[-0.25px] font-bold;
