@@ -1,4 +1,5 @@
 'use client'
+import InvoicesSkeleton from '@/components/molecules/InvoicesSkeleton'
 import { FilterContextProvider } from '@/context/FilterContext'
 import { ModalContextProvider } from '@/context/ModalContext'
 import { SessionProvider } from 'next-auth/react'
@@ -15,7 +16,7 @@ const Providers: React.FC<ProvidersProps> = ({ children }) => {
         setMounted(true)
     }, [])
     // TODO: Add skeleton
-    if (!mounted) return <div>Skeleton...</div>
+    if (!mounted) return <InvoicesSkeleton />
     return (
         <ThemeProvider
             enableSystem
