@@ -1,9 +1,11 @@
-import React, { HTMLAttributes } from 'react'
+import React, { HTMLAttributes, HTMLInputTypeAttribute } from 'react'
 
 interface CustomInputProps extends HTMLAttributes<HTMLInputElement> {
     label?: string
     labelOnSmallDevices?: boolean
     disabled?: boolean
+    value?: string
+    type?: HTMLInputTypeAttribute
 }
 
 export const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
@@ -13,6 +15,8 @@ export const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             className,
             disabled = false,
             labelOnSmallDevices = false,
+            value,
+            type = 'text',
             ...rest
         } = props
         return (
@@ -25,6 +29,7 @@ export const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
                     {label}
                 </p>
                 <input
+                    value={value}
                     className={`rounded-[4px] bg-white heading-sm-variant  border-[1px] w-full outline-none border-[#DFE3FA] dark:border-[#252945] px-5 py-4 ${
                         disabled
                             ? 'border-none text-color-6 px-0 dark:bg-color-12'

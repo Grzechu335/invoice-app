@@ -82,7 +82,7 @@
 
 @layer utilities {
     .heading-lg {
-        @apply text-[36px] leading-[33px] tracking-[-1px] font-bold text-color-8 dark:text-white;
+        @apply text-[26px] leading-[29px] md:text-[36px] md:leading-[33px] tracking-[-1px] font-bold text-color-8 dark:text-white;
     }
     .heading-md {
         @apply text-[24px] leading-[22px] tracking-[-0.75px] font-bold;

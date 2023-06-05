@@ -17,14 +17,18 @@ interface CustomDatePickerProps {
     label: string
     className?: string
     disabled?: boolean
+    onChange: () => void
+    value: Date
 }
 
 const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
     label,
     className,
     disabled = false,
+    value,
+    onChange,
 }) => {
-    const [date, setDate] = React.useState<Date>()
+    // const [date, setDate] = React.useState<Date>()
 
     return (
         <div className={`${className}`}>
@@ -36,11 +40,11 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
                         variant={'outline'}
                         className={cn(
                             'w-full justify-between text-left heading-sm-variant px-5 py-4 h-12 dark:bg-color-3',
-                            !date && 'text-muted-foreground'
+                            !value && 'text-muted-foreground'
                         )}
                     >
-                        {date ? (
-                            format(date, 'dd MMM yyyy')
+                        {value ? (
+                            format(value, 'dd MMM yyyy')
                         ) : (
                             <span className="body-variant text-color-7">
                                 Pick a date
@@ -52,8 +56,8 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
                 <PopoverContent className="w-auto p-0">
                     <Calendar
                         mode="single"
-                        selected={date}
-                        onSelect={setDate}
+                        selected={value}
+                        onSelect={onChange}
                         initialFocus
                     />
                 </PopoverContent>

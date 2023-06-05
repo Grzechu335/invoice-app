@@ -3,14 +3,13 @@ export interface Invoice {
     createdAt: string
     paymentDue?: string
     description: string
-    paymentTerms: number
+    paymentTerms: string
     clientName: string
     clientEmail: string
     status: 'paid' | 'pending' | 'draft'
     senderAddress: Address
     clientAddress: Address
     items: Item[]
-    total: number
 }
 
 export interface Address {
@@ -24,5 +23,4 @@ export interface Item {
     name: string
     quantity: number
     price: number
-    total: number
 }

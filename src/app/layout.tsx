@@ -12,6 +12,10 @@ const leagueSpartan = League_Spartan({
 export const metadata = {
     title: 'Invoice App',
     description: 'Invoice Web App by Grzegorz Skrabucha',
+    other: {
+        viewport:
+            'width=device-width, initial-scale-1, maximum-scale=1, user-scalable=0',
+    },
 }
 
 export default function RootLayout({

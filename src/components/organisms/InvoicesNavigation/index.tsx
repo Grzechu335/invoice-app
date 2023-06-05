@@ -10,7 +10,7 @@ const InvoicesNavigation: React.FC<InvoicesNavigationProps> = ({ qty }) => {
     const { toggleNewModal } = useModalContext()
     return (
         <div className="flex items-center justify-between h-[55px]">
-            <div className="text-color-6 text-[13px] flex flex-col space-y-[6px] leading-[15px] tracking-[-0.1px]">
+            <div className="text-color-6 text-[13px] flex flex-col space-y-0 md:space-y-[6px] leading-[15px] tracking-[-0.1px]">
                 <h1 className="heading-lg">Invoices</h1>
                 {qty !== 0 ? (
                     <>

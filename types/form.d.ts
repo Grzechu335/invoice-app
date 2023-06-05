@@ -14,6 +14,6 @@ export interface FormData {
 interface Address {
     street: string
     city: string
-    postCode: number
+    postCode: string
     country: string
 }
