@@ -4,12 +4,20 @@ import React from 'react'
 import { Invoice } from '../../../types/invoice'
 import InvoicesLayout from '../layouts/InvoicesLayout'
 import InvoicesNavigation from '../organisms/InvoicesNavigation'
+import { useSession } from 'next-auth/react'
+import { redirect } from 'next/navigation'
 
 type DashboardProps = {
     invoices: Invoice[]
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ invoices }) => {
+    const { data: session } = useSession({
+        required: true,
+        onUnauthenticated() {
+            redirect('/api/auth/signin')
+        },
+    })
     const { filters } = useFilterContext()
     const filtredData = [...invoices].filter(
         (invoice) => filters[invoice.status]

@@ -1,6 +1,7 @@
 'use client'
 import { FilterContextProvider } from '@/context/FilterContext'
 import { ModalContextProvider } from '@/context/ModalContext'
+import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from 'next-themes'
 import React, { useEffect, useState } from 'react'
 
@@ -21,9 +22,11 @@ const Providers: React.FC<ProvidersProps> = ({ children }) => {
             defaultTheme="system"
             attribute="class"
         >
-            <FilterContextProvider>
-                <ModalContextProvider>{children}</ModalContextProvider>
-            </FilterContextProvider>
+            <SessionProvider>
+                <FilterContextProvider>
+                    <ModalContextProvider>{children}</ModalContextProvider>
+                </FilterContextProvider>
+            </SessionProvider>
         </ThemeProvider>
     )
 }

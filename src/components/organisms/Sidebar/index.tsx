@@ -6,9 +6,12 @@ import ThemeToggler from '@/components/atoms/ThemeToggler'
 import UserAvatar from '@/components/atoms/UserAvatar'
 import Link from 'next/link'
 import useModalContext from '@/hooks/useModalContext'
+import { usePathname } from 'next/navigation'
 
 const Sidebar: React.FC = () => {
+    const path = usePathname()
     const { closeAllModals } = useModalContext()
+    if (path === '/api/auth/signin') return null
     return (
         <aside className="fixed  left-0 z-[999] xl:flex-col flex-row flex justify-between top-0 xl:rounded-r-[20px] bg-color-3 xl:h-screen xl:w-[103px] w-screen h-[72px] md:h-[80px] ">
             <Link

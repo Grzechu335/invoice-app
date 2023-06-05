@@ -8,11 +8,14 @@ import { useRouter } from 'next/navigation'
 const InvoiceItem: React.FC<Invoice> = ({
     id,
     clientName,
-    total,
     status,
     paymentDue,
+    items,
 }) => {
     const router = useRouter()
+    const total = items.reduce((acc, cur) => {
+        return (acc += cur.price * cur.quantity)
+    }, 0)
     return (
         <div
             onClick={() => router.push(`invoice/${id}`)}
