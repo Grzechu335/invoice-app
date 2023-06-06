@@ -1,14 +1,14 @@
 import React from 'react'
 
 type InvoiceStatusProps = {
-    status: 'paid' | 'pending' | 'draft'
+    status: 'Paid' | 'Pending' | 'Draft'
 }
 
 const InvoiceStatus: React.FC<InvoiceStatusProps> = ({ status }) => {
-    const colors: Record<'paid' | 'pending' | 'draft', string> = {
-        paid: 'bg-[#33D69F] text-[#33D69F]',
-        pending: 'bg-[#FF8F00] text-[#FF8F00]',
-        draft: 'bg-[#373B53] text-[#373B53]',
+    const colors: Record<'Paid' | 'Pending' | 'Draft', string> = {
+        Paid: 'bg-[#33D69F] text-[#33D69F]',
+        Pending: 'bg-[#FF8F00] text-[#FF8F00]',
+        Draft: 'bg-[#373B53] text-[#373B53]',
     }
     return (
         <div

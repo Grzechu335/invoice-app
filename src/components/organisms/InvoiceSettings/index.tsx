@@ -5,7 +5,7 @@ import useModalContext from '@/hooks/useModalContext'
 import React from 'react'
 
 type InvoiceSettingsProps = {
-    status: 'paid' | 'pending' | 'draft'
+    status: 'Paid' | 'Pending' | 'Draft'
 }
 
 const InvoiceSettings: React.FC<InvoiceSettingsProps> = ({ status }) => {

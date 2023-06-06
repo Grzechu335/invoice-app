@@ -9,7 +9,6 @@ declare global {
             GOOGLE_SECRET: string
             NEXTAUTH_SECRET: string
             DATABASE_URL: string
-            DATABASE_SECRET: string
         }
     }
 }

@@ -4,6 +4,7 @@ import InvoiceStatus from '@/components/molecules/InvoiceStatus'
 import currencyFormatter from '../../../../utils/currencyFormatter'
 import { useRouter } from 'next/navigation'
 import { Invoice } from '@prisma/client'
+import dateFormatter from '../../../../utils/dateFormatter'
 
 const InvoiceItem: React.FC<Invoice> = ({
     id,

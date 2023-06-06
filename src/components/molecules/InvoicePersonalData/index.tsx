@@ -1,5 +1,6 @@
 import { Invoice } from '@prisma/client'
 import React from 'react'
+import dateFormatter from '../../../../utils/dateFormatter'
 
 const InvoicePersonalData: React.FC<Invoice> = ({
     id,

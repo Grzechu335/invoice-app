@@ -5,3 +5,5 @@ const dateFormatter = (date: Date) => {
         year: 'numeric',
     })
 }
+
+export default dateFormatter
