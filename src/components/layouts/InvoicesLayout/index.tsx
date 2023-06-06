@@ -1,7 +1,7 @@
 import InvoiceItem from '@/components/organisms/InvoiceItem'
 import EmptyInvoiceTemplate from '@/components/templates/EmptyInvoiceTemplate'
+import { Invoice } from '@prisma/client'
 import React from 'react'
-import { Invoice } from '../../../../types/invoice'
 
 type InvoicesLayoutProps = {
     invoices: Invoice[]

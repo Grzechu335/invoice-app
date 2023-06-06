@@ -3,7 +3,7 @@ import CustomButton from '@/components/atoms/CustomButton'
 import Form from '@/components/organisms/Form'
 import useModalContext from '@/hooks/useModalContext'
 import React, { useEffect } from 'react'
-import { useFieldArray, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { FormData } from '../../../../types/form'
 
 const NewModal: React.FC = () => {

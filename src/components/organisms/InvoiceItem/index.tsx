@@ -1,9 +1,9 @@
 'use client'
 import React from 'react'
-import { Invoice } from '../../../../types/invoice'
 import InvoiceStatus from '@/components/molecules/InvoiceStatus'
 import currencyFormatter from '../../../../utils/currencyFormatter'
 import { useRouter } from 'next/navigation'
+import { Invoice } from '@prisma/client'
 
 const InvoiceItem: React.FC<Invoice> = ({
     id,
@@ -14,7 +14,8 @@ const InvoiceItem: React.FC<Invoice> = ({
 }) => {
     const router = useRouter()
     const total = items.reduce((acc, cur) => {
-        return (acc += cur.price * cur.quantity)
+        acc += cur.price * cur.quantity
+        return acc
     }, 0)
     return (
         <div
@@ -26,7 +27,7 @@ const InvoiceItem: React.FC<Invoice> = ({
                 {id}
             </p>
             <p className="!text-[#858BB2] dark:text-white grid-in-date flex items-center">
-                Due {paymentDue}
+                Due {dateFormatter(paymentDue)}
             </p>
             <p className="flex items-center justify-end md:justify-start grid-in-name">
                 {clientName}

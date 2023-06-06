@@ -2,9 +2,9 @@
 import useModalContext from '@/hooks/useModalContext'
 import React from 'react'
 import EditModal from './EditModal'
-import { Invoice } from '../../../types/invoice'
 import NewModal from './NewModal'
 import DeleteModal from './DeleteModal'
+import { Invoice } from '@prisma/client'
 
 const Modals: React.FC<{ invoice?: Invoice }> = ({ invoice }) => {
     const { editModal, deleteModal, newModal } = useModalContext()

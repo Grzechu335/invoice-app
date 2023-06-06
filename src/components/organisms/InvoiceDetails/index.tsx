@@ -1,7 +1,7 @@
 import InvoicePersonalData from '@/components/molecules/InvoicePersonalData'
 import React from 'react'
-import { Invoice } from '../../../../types/invoice'
 import InvoiceItems from '../InvoiceItems'
+import { Invoice } from '@prisma/client'
 
 const InvoiceDetails: React.FC<{ invoice: Invoice }> = ({ invoice }) => {
     return (

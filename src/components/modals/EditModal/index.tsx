@@ -1,11 +1,11 @@
 'use client'
 import useModalContext from '@/hooks/useModalContext'
 import React, { useEffect } from 'react'
-import { Invoice } from '../../../../types/invoice'
 import CustomButton from '@/components/atoms/CustomButton'
 import { useForm } from 'react-hook-form'
 import Form from '@/components/organisms/Form'
 import { FormData } from '../../../../types/form'
+import { Invoice } from '@prisma/client'
 
 type EditModalProps = {
     invoice: Invoice

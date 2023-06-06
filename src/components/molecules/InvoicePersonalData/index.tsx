@@ -1,5 +1,5 @@
+import { Invoice } from '@prisma/client'
 import React from 'react'
-import { Invoice } from '../../../../types/invoice'
 
 const InvoicePersonalData: React.FC<Invoice> = ({
     id,
@@ -33,7 +33,7 @@ const InvoicePersonalData: React.FC<Invoice> = ({
                     Invoice Date
                 </p>
                 <p className="text-color-8 dark:text-[#fff] heading-sm">
-                    {createdAt}
+                    {dateFormatter(createdAt)}
                 </p>
             </div>
             <div className="flex flex-col space-y-3 grid-in-paymentDue">
@@ -41,7 +41,7 @@ const InvoicePersonalData: React.FC<Invoice> = ({
                     Payment Due
                 </p>
                 <p className="text-color-8 dark:text-[#fff] heading-sm">
-                    {paymentDue}
+                    {dateFormatter(paymentDue)}
                 </p>
             </div>
             <div className="flex flex-col grid-in-client text-end md:text-start">

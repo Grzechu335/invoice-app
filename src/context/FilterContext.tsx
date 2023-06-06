@@ -4,9 +4,9 @@ import React, { ChangeEvent, createContext, useMemo, useState } from 'react'
 // Define type of context value
 export type FilterContextType = {
     filters: {
-        paid: boolean
-        pending: boolean
-        draft: boolean
+        Paid: boolean
+        Pending: boolean
+        Draft: boolean
     }
     changeFilterTags: (e: ChangeEvent<HTMLInputElement>) => void
 }
@@ -14,9 +14,9 @@ export type FilterContextType = {
 // Create context with default values
 const FilterContext = createContext<FilterContextType>({
     filters: {
-        paid: true,
-        pending: true,
-        draft: true,
+        Paid: true,
+        Pending: true,
+        Draft: true,
     },
     changeFilterTags: () => {},
 })
@@ -26,9 +26,9 @@ export const FilterContextProvider: React.FC<{ children: React.ReactNode }> = ({
     children,
 }) => {
     const [filterTags, setFilterTags] = useState({
-        paid: true,
-        pending: true,
-        draft: true,
+        Paid: true,
+        Pending: true,
+        Draft: true,
     })
     const changeFilterTags = (e: ChangeEvent<HTMLInputElement>) => {
         setFilterTags((prev) => ({

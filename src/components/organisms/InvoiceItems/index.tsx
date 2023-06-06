@@ -1,13 +1,14 @@
 'use client'
-import React, { useState } from 'react'
-import { Invoice } from '../../../../types/invoice'
+import { Invoice } from '@prisma/client'
+import React from 'react'
 import currencyFormatter from '../../../../utils/currencyFormatter'
 
 type Props = {}
 
 const InvoiceItems: React.FC<Invoice> = ({ items }) => {
     const totalSum = items.reduce((acc, cur) => {
-        return (acc += cur.price * cur.quantity)
+        acc += cur.price * cur.quantity
+        return acc
     }, 0)
     return (
         <div className="bg-[#F9FAFE] mt-12 dark:bg-color-4 rounded-[8px]">
