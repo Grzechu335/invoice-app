@@ -8,6 +8,8 @@ type CustomButtonProps = {
     className?: string
     onClick?: MouseEventHandler
     smallFont?: boolean
+    submit?: boolean
+    id?: string
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -16,6 +18,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     className,
     onClick,
     smallFont = false,
+    submit,
+    id,
 }) => {
     const Variants: Record<1 | 2 | 3 | 4 | 5 | 6, string> = {
         1: 'bg-color-1 text-[#fff] hover:bg-color-2 !p-2',
@@ -27,6 +31,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     }
     return (
         <button
+            id={id ? id : ''}
+            type={submit ? 'submit' : undefined}
             onClick={onClick}
             className={`md:heading-sm-variant py-4 px-6 flex items-center rounded-full ${
                 smallFont ? 'text-[12px] leading-[12px]' : 'heading-sm-variant'

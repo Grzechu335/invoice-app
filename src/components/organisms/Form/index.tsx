@@ -4,7 +4,6 @@ import GoBackButton from '@/components/atoms/GoBackButton'
 import useModalContext from '@/hooks/useModalContext'
 import React, { useEffect, useRef } from 'react'
 import CustomDatePicker from '../CustomDatePicker'
-import { Invoice } from '../../../../types/invoice'
 import CustomSelect from '../CustomSelect'
 import CustomButton from '@/components/atoms/CustomButton'
 import Image from 'next/image'
@@ -12,6 +11,7 @@ import { Controller, UseFormReturn, useFieldArray } from 'react-hook-form'
 import { FormData } from '../../../../types/form'
 import { DevTool } from '@hookform/devtools'
 import FormItem from '@/components/molecules/FormItem'
+import { Invoice } from '@prisma/client'
 
 type FormProps = {
     invoice?: Invoice
@@ -54,22 +54,22 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                 </h3>
                 <div className="grid grid-cols-2 grid-rows-3 gap-6 grid-areas-billFromSmall md:grid-areas-billFromWide md:grid-cols-3 md:grid-rows-2">
                     <CustomInput
-                        {...register('sender.street')}
+                        {...register('senderAddress.street')}
                         label="Street Address"
                         className="grid-in-senderStreet"
                     />
                     <CustomInput
                         label="City"
                         className="grid-in-senderCity"
-                        {...register('sender.city')}
+                        {...register('senderAddress.city')}
                     />
                     <CustomInput
-                        {...register('sender.postCode')}
+                        {...register('senderAddress.postCode')}
                         label="Post Code"
                         className="grid-in-senderPostCode"
                     />
                     <CustomInput
-                        {...register('sender.country')}
+                        {...register('senderAddress.country')}
                         label="Country"
                         className="grid-in-senderCountry"
                     />
@@ -81,32 +81,32 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                 </h3>
                 <div className="grid grid-cols-2 grid-rows-5 gap-6 grid-areas-billToSmall md:grid-areas-billToWide md:grid-cols-3 md:grid-rows-4 ">
                     <CustomInput
-                        {...register('clientsName')}
+                        {...register('clientName')}
                         label="Client's Name"
                         className="grid-in-clientName"
                     />
                     <CustomInput
-                        {...register('clientsEmail')}
+                        {...register('clientEmail')}
                         label="Client's Email"
                         className="grid-in-clientEmail"
                     />
                     <CustomInput
-                        {...register('client.street')}
+                        {...register('clientAddress.street')}
                         label="Street Address"
                         className="grid-in-clientStreet"
                     />
                     <CustomInput
-                        {...register('client.city')}
+                        {...register('clientAddress.city')}
                         label="City"
                         className="grid-in-clientCity"
                     />
                     <CustomInput
-                        {...register('client.postCode')}
+                        {...register('clientAddress.postCode')}
                         label="Post Code"
                         className="grid-in-clientPostCode"
                     />
                     <CustomInput
-                        {...register('client.country')}
+                        {...register('clientAddress.country')}
                         label="Country"
                         className="grid-in-clientCountry"
                     />
@@ -115,7 +115,7 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
             <div className="grid grid-cols-2 gap-6">
                 <Controller
                     control={control}
-                    name="invoiceDate"
+                    name="createdAt"
                     render={({ field: { onChange, value } }) => (
                         <CustomDatePicker
                             onChange={onChange}
@@ -127,7 +127,7 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                 />
                 <Controller
                     control={control}
-                    name="paymentsTerms"
+                    name="paymentTerms"
                     render={({ field: { onChange, value } }) => (
                         <CustomSelect
                             label="Payment Terms"

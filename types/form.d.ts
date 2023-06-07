@@ -1,14 +1,14 @@
 import { Item } from './invoice'
 
 export interface FormData {
-    sender: Address
-    client: Address
-    clientsName: string
-    clientsEmail: string
+    senderAddress: Address
+    clientAddress: Address
+    clientName: string
+    clientEmail: string
     description: string
     items: Item[]
-    invoiceDate: Date
-    paymentsTerms: string
+    createdAt: Date
+    paymentTerms: string
 }
 
 interface Address {

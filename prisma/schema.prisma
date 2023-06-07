@@ -14,7 +14,7 @@ generator json {
 
 
 model Invoice {
-  id            String   @id
+  id            String   @id @default(uuid())
   createdAt     DateTime @default(now())
   paymentDue    DateTime
   description   String
