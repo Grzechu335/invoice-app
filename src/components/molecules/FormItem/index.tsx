@@ -29,27 +29,46 @@ const FormItem: React.FC<FormItemProps> = ({
     return (
         <div className="grid grid-cols-12 gap-4">
             <CustomInput
-                {...register(`items.${idx}.name`)}
+                {...register(`items.${idx}.name`, {
+                    required: {
+                        value: true,
+                        message: 'Field cannot be empty',
+                    },
+                })}
                 labelOnSmallDevices
                 label="Item name"
                 className="col-span-full md:col-span-4"
             />
             <CustomInput
-                {...register(`items.${idx}.quantity`)}
+                {...register(`items.${idx}.quantity`, {
+                    required: {
+                        value: true,
+                        message: 'Field cannot be empty',
+                    },
+                })}
                 type="number"
                 labelOnSmallDevices
                 label="Qty."
                 className="col-span-3 md:col-span-2"
             />
             <CustomInput
-                {...register(`items.${idx}.price`)}
+                {...register(`items.${idx}.price`, {
+                    required: {
+                        value: true,
+                        message: 'Field cannot be empty',
+                    },
+                })}
                 type="number"
                 labelOnSmallDevices
                 label="Price"
                 className="col-span-4 md:col-span-2"
             />
             <CustomInput
-                value={(price! * quantity!).toFixed(2)}
+                value={
+                    typeof price === 'number' && typeof quantity === 'number'
+                        ? (price * quantity).toFixed(2)
+                        : ''
+                }
                 labelOnSmallDevices
                 disabled
                 label="Total"

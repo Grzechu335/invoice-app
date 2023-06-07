@@ -23,9 +23,9 @@ const InvoiceItem: React.FC<Invoice> = ({
             onClick={() => router.push(`invoice/${id}`)}
             className="shadow-md body-variant grid p-[32px] bg-white dark:bg-color-3 rounded-[8px] cursor-pointer grid-areas-invoiceListSmall md:grid-areas-invoiceListWide grid-cols-[1fr_1fr] grid-rows-[1fr_1fr_1fr] md:grid-rows-1 md:grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-[9px] md:gap-[65px]"
         >
-            <p className="flex items-center font-bold uppercase text-color-8 dark:text-white grid-in-id">
+            <p className="flex items-center w-20 font-bold uppercase md:w-18 xl:w-20 text-color-8 dark:text-white grid-in-id">
                 <span className="text-color-7">#</span>
-                {id}
+                <span className="truncate">{id}</span>
             </p>
             <p className="!text-[#858BB2] dark:text-white grid-in-date flex items-center">
                 Due {dateFormatter(paymentDue)}

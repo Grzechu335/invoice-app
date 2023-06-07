@@ -1,4 +1,5 @@
 import React, { HTMLAttributes, HTMLInputTypeAttribute } from 'react'
+import { FieldError } from 'react-hook-form'
 
 interface CustomInputProps extends HTMLAttributes<HTMLInputElement> {
     label?: string
@@ -6,6 +7,7 @@ interface CustomInputProps extends HTMLAttributes<HTMLInputElement> {
     disabled?: boolean
     value?: string
     type?: HTMLInputTypeAttribute
+    error?: FieldError
 }
 
 export const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
@@ -17,10 +19,16 @@ export const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             labelOnSmallDevices = false,
             value,
             type = 'text',
+            error,
             ...rest
         } = props
         return (
-            <label className={`${className}`}>
+            <label className={`${className} relative`}>
+                {error && (
+                    <span className="absolute top-0 right-0 error">
+                        {error.message}
+                    </span>
+                )}
                 <p
                     className={`mb-2 text-color-7 body-variant ${
                         labelOnSmallDevices ? 'md:hidden' : ''

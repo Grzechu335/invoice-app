@@ -2,12 +2,11 @@
 import CustomButton from '@/components/atoms/CustomButton'
 import Form from '@/components/organisms/Form'
 import useModalContext from '@/hooks/useModalContext'
+import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { FormData } from '../../../../types/form'
-import { Invoice } from '@prisma/client'
 import { newInvoice } from '../../../../types/invoice'
-import { useRouter } from 'next/navigation'
 
 const NewModal: React.FC = () => {
     const router = useRouter()

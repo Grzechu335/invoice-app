@@ -1,24 +1,9 @@
 import { PrismaClient } from '@prisma/client'
-declare global {
-    namespace globalThis {
-        interface Global {
-            prisma: PrismaClient
-        }
-    }
-}
 
-let prisma: PrismaClient
+// @ts-ignore
+const prisma = global.prisma || new PrismaClient()
 
-if (process.env.NODE_ENV === 'production') {
-    prisma = new PrismaClient()
-} else {
-    //@ts-ignore
-    if (!global.prisma) {
-        // @ts-ignore
-        global.prisma = new PrismaClient()
-    }
-    // @ts-ignore
-    prisma = global.prisma
-}
+// @ts-ignore
+if (process.env.NODE_ENV === 'development') global.prisma = prisma
 
 export default prisma

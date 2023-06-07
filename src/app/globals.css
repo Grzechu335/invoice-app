@@ -96,4 +96,7 @@
     .body-variant {
         @apply text-[13px] leading-[15px] tracking-[-0.25px] font-medium;
     }
+    .error {
+        @apply text-[10px] leading-[15px] tracking-[-0.21px] text-color-9;
+    }
 }

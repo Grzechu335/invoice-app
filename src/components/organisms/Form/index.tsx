@@ -20,9 +20,19 @@ type FormProps = {
 
 const Form: React.FC<FormProps> = ({ invoice, form }) => {
     const scrollDivRef = useRef<HTMLSpanElement>(null)
-    const { register, control } = form
+    const {
+        register,
+        control,
+        formState: { errors },
+    } = form
     const { closeAllModals } = useModalContext()
-    const { fields, append, remove } = useFieldArray({ control, name: 'items' })
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: 'items',
+        rules: {
+            required: 'Please append at least 1 item',
+        },
+    })
 
     useEffect(() => {
         const scrollToBottom = () => {
@@ -32,6 +42,7 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
         }
         scrollToBottom()
     }, [fields])
+    console.log(errors.items)
     return (
         <div className="flex flex-col space-y-10 pb-52 md:pb-32">
             <GoBackButton
@@ -54,24 +65,48 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                 </h3>
                 <div className="grid grid-cols-2 grid-rows-3 gap-6 grid-areas-billFromSmall md:grid-areas-billFromWide md:grid-cols-3 md:grid-rows-2">
                     <CustomInput
-                        {...register('senderAddress.street')}
+                        {...register('senderAddress.street', {
+                            required: {
+                                value: true,
+                                message: 'Field cannot be empty',
+                            },
+                        })}
                         label="Street Address"
                         className="grid-in-senderStreet"
+                        error={errors.senderAddress?.street}
                     />
                     <CustomInput
                         label="City"
                         className="grid-in-senderCity"
-                        {...register('senderAddress.city')}
+                        {...register('senderAddress.city', {
+                            required: {
+                                value: true,
+                                message: 'Field cannot be empty',
+                            },
+                        })}
+                        error={errors.senderAddress?.city}
                     />
                     <CustomInput
-                        {...register('senderAddress.postCode')}
+                        {...register('senderAddress.postCode', {
+                            required: {
+                                value: true,
+                                message: 'Field cannot be empty',
+                            },
+                        })}
                         label="Post Code"
                         className="grid-in-senderPostCode"
+                        error={errors.senderAddress?.postCode}
                     />
                     <CustomInput
-                        {...register('senderAddress.country')}
+                        {...register('senderAddress.country', {
+                            required: {
+                                value: true,
+                                message: 'Field cannot be empty',
+                            },
+                        })}
                         label="Country"
                         className="grid-in-senderCountry"
+                        error={errors.senderAddress?.country}
                     />
                 </div>
             </div>
@@ -81,32 +116,68 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                 </h3>
                 <div className="grid grid-cols-2 grid-rows-5 gap-6 grid-areas-billToSmall md:grid-areas-billToWide md:grid-cols-3 md:grid-rows-4 ">
                     <CustomInput
-                        {...register('clientName')}
+                        {...register('clientName', {
+                            required: {
+                                value: true,
+                                message: 'Field cannot be empty',
+                            },
+                        })}
                         label="Client's Name"
                         className="grid-in-clientName"
+                        error={errors.clientName}
                     />
                     <CustomInput
-                        {...register('clientEmail')}
+                        {...register('clientEmail', {
+                            required: {
+                                value: true,
+                                message: 'Field cannot be empty',
+                            },
+                        })}
                         label="Client's Email"
                         className="grid-in-clientEmail"
+                        error={errors.clientEmail}
                     />
                     <CustomInput
-                        {...register('clientAddress.street')}
+                        {...register('clientAddress.street', {
+                            required: {
+                                value: true,
+                                message: 'Field cannot be empty',
+                            },
+                        })}
                         label="Street Address"
                         className="grid-in-clientStreet"
+                        error={errors.clientAddress?.street}
                     />
                     <CustomInput
-                        {...register('clientAddress.city')}
+                        error={errors.clientAddress?.city}
+                        {...register('clientAddress.city', {
+                            required: {
+                                value: true,
+                                message: 'Field cannot be empty',
+                            },
+                        })}
                         label="City"
                         className="grid-in-clientCity"
                     />
                     <CustomInput
-                        {...register('clientAddress.postCode')}
+                        error={errors.clientAddress?.postCode}
+                        {...register('clientAddress.postCode', {
+                            required: {
+                                value: true,
+                                message: 'Field cannot be empty',
+                            },
+                        })}
                         label="Post Code"
                         className="grid-in-clientPostCode"
                     />
                     <CustomInput
-                        {...register('clientAddress.country')}
+                        error={errors.clientAddress?.country}
+                        {...register('clientAddress.country', {
+                            required: {
+                                value: true,
+                                message: 'Field cannot be empty',
+                            },
+                        })}
                         label="Country"
                         className="grid-in-clientCountry"
                     />
@@ -138,9 +209,15 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                     )}
                 />
                 <CustomInput
-                    {...register('description')}
+                    {...register('description', {
+                        required: {
+                            value: true,
+                            message: 'Field cannot be empty',
+                        },
+                    })}
                     label="Project Description"
                     className="col-span-full"
+                    error={errors.description}
                 />
             </div>
             <div>
@@ -153,7 +230,7 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                     <p className="col-span-2">Price</p>
                     <p className="col-span-3">Total</p>
                 </div>
-                <div className="grid gap-10 md:gap-4">
+                <div className="relative grid gap-10 md:gap-4">
                     {fields.map(({ id }, idx) => (
                         <FormItem
                             key={id}
@@ -163,6 +240,11 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                             control={control}
                         />
                     ))}
+                    {errors.items?.root?.message && (
+                        <span className="absolute bottom-0 error">
+                            {errors.items.root?.message}
+                        </span>
+                    )}
                 </div>
                 <div>
                     <CustomButton
@@ -179,6 +261,7 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                         + Add New Item
                     </CustomButton>
                 </div>
+                <div></div>
                 <span
                     ref={scrollDivRef}
                     id="dummy span"

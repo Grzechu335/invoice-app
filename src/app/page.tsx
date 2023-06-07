@@ -3,13 +3,12 @@ import Dashboard from '@/components/templates/Dashboard'
 import prisma from '../../utils/prisma'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/authOptions'
+import { redirect } from 'next/navigation'
 
 export default async function Home() {
     const session = await getServerSession(authOptions)
 
-    if (!session) {
-        return <div>Failed to get session</div>
-    }
+    if (!session) redirect('/api/auth/signin')
     const invoices = await prisma.invoice.findMany({
         where: {
             userId: session.user.id,
