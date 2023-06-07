@@ -10,6 +10,7 @@ type CustomButtonProps = {
     smallFont?: boolean
     submit?: boolean
     id?: string
+    value?: string
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -20,6 +21,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     smallFont = false,
     submit,
     id,
+    value,
 }) => {
     const Variants: Record<1 | 2 | 3 | 4 | 5 | 6, string> = {
         1: 'bg-color-1 text-[#fff] hover:bg-color-2 !p-2',
@@ -31,6 +33,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     }
     return (
         <button
+            value={value}
             id={id ? id : ''}
             type={submit ? 'submit' : undefined}
             onClick={onClick}

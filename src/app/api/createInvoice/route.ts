@@ -11,13 +11,13 @@ interface Response {
 }
 
 export async function POST(req: NextRequest) {
-    const data: { newInvoice: newInvoice } = await req.json()
+    const data: { newInvoice: newInvoice; type: 'new' | 'draft' } =
+        await req.json()
     const session = await getServerSession(authOptions)
-
     if (session) {
         const invoiceToSend: Omit<Invoice, 'id'> = {
             ...data.newInvoice,
-            status: 'Pending',
+            status: data.type === 'new' ? 'Pending' : 'Draft',
             paymentDue: addDaysToDate(
                 data.newInvoice.createdAt,
                 Number(data.newInvoice.paymentTerms)

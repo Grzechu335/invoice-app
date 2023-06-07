@@ -14,7 +14,10 @@ export default async function Page({ params }: { params: { id: string } }) {
     return (
         <main className="flex flex-col space-y-6 pb-[80px]">
             <GoBackButton />
-            <InvoiceSettings status={invoice.status} />
+            <InvoiceSettings
+                status={invoice.status}
+                id={invoice.id}
+            />
             <InvoiceDetails invoice={invoice} />
             <Modals invoice={invoice} />
         </main>

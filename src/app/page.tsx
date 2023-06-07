@@ -6,11 +6,16 @@ import { authOptions } from '@/lib/authOptions'
 
 export default async function Home() {
     const session = await getServerSession(authOptions)
+
+    if (!session) {
+        return <div>Failed to get session</div>
+    }
     const invoices = await prisma.invoice.findMany({
         where: {
-            userId: session?.user.id,
+            userId: session.user.id,
         },
     })
+
     return (
         <>
             <Dashboard invoices={invoices} />

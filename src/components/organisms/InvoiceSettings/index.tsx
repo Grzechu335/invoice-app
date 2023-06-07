@@ -2,14 +2,26 @@
 import CustomButton from '@/components/atoms/CustomButton'
 import InvoiceStatus from '@/components/molecules/InvoiceStatus'
 import useModalContext from '@/hooks/useModalContext'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 type InvoiceSettingsProps = {
     status: 'Paid' | 'Pending' | 'Draft'
+    id: string
 }
 
-const InvoiceSettings: React.FC<InvoiceSettingsProps> = ({ status }) => {
+const InvoiceSettings: React.FC<InvoiceSettingsProps> = ({ status, id }) => {
     const { toggleDeleteModal, toggleEditModal } = useModalContext()
+    const router = useRouter()
+    const markAsPaid = async () => {
+        await fetch('/api/markAsPaid', {
+            method: 'POST',
+            body: JSON.stringify({ id }),
+        })
+        router.push('/')
+        router.refresh()
+    }
+
     return (
         <div className="flex items-center justify-between bg-[#fff] dark:bg-color-3 rounded-[8px] py-6 px-8 shadow-md">
             <div className="flex items-center justify-between flex-grow md:space-x-5 md:flex-grow-0">
@@ -29,7 +41,12 @@ const InvoiceSettings: React.FC<InvoiceSettingsProps> = ({ status }) => {
                 >
                     Delete
                 </CustomButton>
-                <CustomButton variant={2}>Mark as Paid</CustomButton>
+                <CustomButton
+                    onClick={markAsPaid}
+                    variant={2}
+                >
+                    Mark as Paid
+                </CustomButton>
             </div>
         </div>
     )

@@ -47,7 +47,9 @@ const NewModal: React.FC = () => {
         }
     })
 
-    const onSubmit = form.handleSubmit(async (data) => {
+    const onSubmit = form.handleSubmit(async (data, event) => {
+        // @ts-ignore
+        const value: 'new' | 'draft' = event?.nativeEvent.submitter.value
         const newInvoice: newInvoice = {
             ...data,
         }
@@ -55,7 +57,10 @@ const NewModal: React.FC = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ newInvoice }),
+            body: JSON.stringify({
+                newInvoice,
+                type: value,
+            }),
             method: 'POST',
         })
         closeAllModals()
@@ -88,6 +93,9 @@ const NewModal: React.FC = () => {
                                 Discard
                             </CustomButton>
                             <CustomButton
+                                value="draft"
+                                id="newInvoiceForm"
+                                submit
                                 variant={4}
                                 smallFont
                             >
@@ -96,6 +104,7 @@ const NewModal: React.FC = () => {
                             <CustomButton
                                 id="newInvoiceForm"
                                 submit
+                                value="new"
                                 variant={2}
                                 smallFont
                             >
