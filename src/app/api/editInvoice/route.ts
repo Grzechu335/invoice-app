@@ -1,16 +1,23 @@
 import { NextRequest } from 'next/server'
+import { updatedInvoice } from '../../../../types/invoice'
+import addDaysToDate from '../../../../utils/addDaysToDate'
 import prisma from '../../../../utils/prisma'
 
 export async function POST(req: NextRequest) {
     const data: {
-        id: string
+        updatedInvoice: updatedInvoice
     } = await req.json()
+
     await prisma.invoice.update({
         data: {
-            status: 'Paid',
+            ...data.updatedInvoice,
+            paymentDue: addDaysToDate(
+                data.updatedInvoice.createdAt,
+                Number(data.updatedInvoice.paymentTerms)
+            ),
         },
         where: {
-            id: data.id,
+            id: data.updatedInvoice.id,
         },
     })
 }

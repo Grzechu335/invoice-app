@@ -31,9 +31,9 @@ const FilterInvoice: React.FC = () => {
                         <input
                             type="checkbox"
                             name="Paid"
-                            id="paid"
-                            value="paid"
-                            checked={filters.paid}
+                            id="Paid"
+                            value="Paid"
+                            checked={filters.Paid}
                             onChange={(e) => changeFilterTags(e)}
                         />
                         <p>Paid</p>
@@ -42,9 +42,9 @@ const FilterInvoice: React.FC = () => {
                         <input
                             type="checkbox"
                             name="Pending"
-                            id="pending"
-                            value="pending"
-                            checked={filters.pending}
+                            id="Pending"
+                            value="Pending"
+                            checked={filters.Pending}
                             onChange={(e) => changeFilterTags(e)}
                         />
                         <p>Pending</p>
@@ -53,9 +53,9 @@ const FilterInvoice: React.FC = () => {
                         <input
                             type="checkbox"
                             name="Draft"
-                            id="draft"
-                            value="draft"
-                            checked={filters.draft}
+                            id="Draft"
+                            value="Draft"
+                            checked={filters.Draft}
                             onChange={(e) => changeFilterTags(e)}
                         />
                         <p>Draft</p>
