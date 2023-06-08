@@ -64,7 +64,7 @@ const NewModal: React.FC = () => {
         })
         closeAllModals()
         router.push('/')
-        // router.refresh()
+        router.refresh()
     })
 
     return (
