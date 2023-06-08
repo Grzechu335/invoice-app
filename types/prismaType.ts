@@ -1,5 +1,4 @@
-import type { Invoice } from '@prisma/client'
-
+export {}
 declare global {
     namespace PrismaJson {
         export type Item = {

@@ -1,13 +1,13 @@
 'use client'
-import useModalContext from '@/hooks/useModalContext'
-import React, { useEffect } from 'react'
 import CustomButton from '@/components/atoms/CustomButton'
-import { useForm } from 'react-hook-form'
 import Form from '@/components/organisms/Form'
-import { FormData } from '../../../../types/form'
+import useModalContext from '@/hooks/useModalContext'
 import { Invoice } from '@prisma/client'
 import { useRouter } from 'next/navigation'
-import { newInvoice, updatedInvoice } from '../../../../types/invoice'
+import React, { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { FormData } from '../../../../types/form'
+import { updatedInvoice } from '../../../../types/invoice'
 
 type EditModalProps = {
     invoice: Invoice
@@ -50,6 +50,7 @@ const EditModal: React.FC<EditModalProps> = ({ invoice }) => {
             ...data,
             id: invoice.id,
             status: invoice.status,
+            // @ts-ignore
             userId: invoice.userId,
         }
         await fetch('/api/editInvoice', {

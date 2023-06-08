@@ -11,7 +11,7 @@ export default async function Home() {
     if (!session) redirect('/api/auth/signin')
     const invoices = await prisma.invoice.findMany({
         where: {
-            userId: session.user.id,
+            authorId: session.user.id,
         },
     })
 

@@ -1,12 +1,9 @@
 import ProviderButton from '@/components/atoms/ProviderButton'
-import { NextPage } from 'next'
 import { getProviders } from 'next-auth/react'
-import React from 'react'
-import LogoImage from 'public/assets/logo.svg'
 import Image from 'next/image'
+import LogoImage from 'public/assets/logo.svg'
 
-// @ts-expect-error
-const SignIn: NextPage = async () => {
+const SignIn = async () => {
     const providers = await getProviders()
     if (providers)
         return (

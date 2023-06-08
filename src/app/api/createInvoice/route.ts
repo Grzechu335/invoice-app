@@ -6,10 +6,6 @@ import addDaysToDate from '../../../../utils/addDaysToDate'
 import prisma from '../../../../utils/prisma'
 import { newInvoice } from './../../../../types/invoice.d'
 
-interface Response {
-    message: string
-}
-
 export async function POST(req: NextRequest) {
     const data: { newInvoice: newInvoice; type: 'new' | 'draft' } =
         await req.json()
@@ -22,7 +18,7 @@ export async function POST(req: NextRequest) {
                 data.newInvoice.createdAt,
                 Number(data.newInvoice.paymentTerms)
             ),
-            userId: session?.user.id,
+            authorId: session?.user.id,
         }
         await prisma.invoice.create({
             data: invoiceToSend,

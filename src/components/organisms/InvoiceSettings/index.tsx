@@ -18,7 +18,6 @@ const InvoiceSettings: React.FC<InvoiceSettingsProps> = ({ status, id }) => {
             method: 'POST',
             body: JSON.stringify({ id }),
         })
-        router.push('/')
         router.refresh()
     }
 
