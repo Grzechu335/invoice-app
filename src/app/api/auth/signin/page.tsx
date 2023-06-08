@@ -3,6 +3,8 @@ import { getProviders } from 'next-auth/react'
 import Image from 'next/image'
 import LogoImage from 'public/assets/logo.svg'
 
+export const dynamic = 'force-dynamic'
+
 const SignIn = async () => {
     const providers = await getProviders()
     if (providers)
