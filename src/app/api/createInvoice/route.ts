@@ -3,7 +3,7 @@ import { Invoice } from '@prisma/client'
 import { getServerSession } from 'next-auth'
 import { NextRequest, NextResponse } from 'next/server'
 import addDaysToDate from '../../../../utils/addDaysToDate'
-import prisma from '../../../../utils/prisma'
+import { prisma } from '../../../../utils/prisma'
 import { newInvoice } from './../../../../types/invoice.d'
 
 export async function POST(req: NextRequest) {

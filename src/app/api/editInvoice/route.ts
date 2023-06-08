@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { updatedInvoice } from '../../../../types/invoice'
 import addDaysToDate from '../../../../utils/addDaysToDate'
-import prisma from '../../../../utils/prisma'
+import { prisma } from '../../../../utils/prisma'
 
 export async function POST(req: NextRequest) {
     const data: {

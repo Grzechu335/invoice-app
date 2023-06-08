@@ -8,6 +8,8 @@ import { useForm } from 'react-hook-form'
 import { FormData } from '../../../../types/form'
 import { newInvoice } from '../../../../types/invoice'
 
+export const dynamic = 'force-dynamic'
+
 const NewModal: React.FC = () => {
     const router = useRouter()
     const { toggleNewModal, closeAllModals } = useModalContext()
@@ -62,8 +64,8 @@ const NewModal: React.FC = () => {
             }),
             method: 'POST',
         })
-        closeAllModals()
         router.push('/')
+        closeAllModals()
         router.refresh()
     })
 
