@@ -1,25 +1,23 @@
 'use client'
+import CustomButton from '@/components/atoms/CustomButton'
 import { CustomInput } from '@/components/atoms/CustomInput'
 import GoBackButton from '@/components/atoms/GoBackButton'
+import FormItem from '@/components/molecules/FormItem'
 import useModalContext from '@/hooks/useModalContext'
-import React, { useEffect, useRef } from 'react'
-import CustomDatePicker from '../CustomDatePicker'
-import CustomSelect from '../CustomSelect'
-import CustomButton from '@/components/atoms/CustomButton'
-import Image from 'next/image'
+import { Invoice } from '@prisma/client'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { Controller, UseFormReturn, useFieldArray } from 'react-hook-form'
 import { FormData } from '../../../../types/form'
-import { DevTool } from '@hookform/devtools'
-import FormItem from '@/components/molecules/FormItem'
-import { Invoice } from '@prisma/client'
-
+import CustomDatePicker from '../CustomDatePicker'
+import CustomSelect from '../CustomSelect'
+import useDidMountEffect from '@/hooks/useDidMountEffect'
 type FormProps = {
     invoice?: Invoice
     form: UseFormReturn<FormData, any, undefined>
 }
 
 const Form: React.FC<FormProps> = ({ invoice, form }) => {
-    const scrollDivRef = useRef<HTMLSpanElement>(null)
+    const scrollDivRef = useRef<HTMLDivElement>(null)
     const {
         register,
         control,
@@ -33,16 +31,21 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
             required: 'Please append at least 1 item',
         },
     })
-
-    useEffect(() => {
+    useDidMountEffect(() => {
         const scrollToBottom = () => {
-            scrollDivRef.current?.scrollIntoView({
-                behavior: 'smooth',
-            })
+            scrollDivRef?.current?.scrollIntoView()
         }
         scrollToBottom()
     }, [fields])
-    console.log(errors.items)
+
+    const addNewItem = (e: React.MouseEvent) => {
+        e.preventDefault()
+        append({
+            name: 'Some item',
+            price: 1,
+            quantity: 1,
+        })
+    }
     return (
         <div className="flex flex-col space-y-10 pb-52 md:pb-32">
             <GoBackButton
@@ -248,27 +251,19 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                 </div>
                 <div>
                     <CustomButton
-                        onClick={(e) => {
-                            e.preventDefault()
-                            append({
-                                name: 'Some item',
-                                price: 1,
-                                quantity: 1,
-                            })
-                        }}
+                        onClick={(e) => addNewItem(e)}
                         variant={6}
                         className="flex items-center justify-center w-full mt-12 md:mt-4"
                     >
                         + Add New Item
                     </CustomButton>
                 </div>
-                <div></div>
-                <span
+                <div
                     ref={scrollDivRef}
-                    id="dummy span"
+                    id="dummyDiv"
+                    className="w-1 h-1"
                 />
             </div>
-            <DevTool control={control} />
         </div>
     )
 }
