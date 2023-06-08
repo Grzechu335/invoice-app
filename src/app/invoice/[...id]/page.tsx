@@ -7,6 +7,8 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/authOptions'
 import { redirect } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Page({ params }: { params: { id: string } }) {
     const session = await getServerSession(authOptions)
 

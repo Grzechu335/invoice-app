@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Modals from '@/components/modals'
 import Dashboard from '@/components/templates/Dashboard'
 import prisma from '../../utils/prisma'
