@@ -20,9 +20,17 @@ export async function POST(req: NextRequest) {
             ),
             authorId: session?.user.id,
         }
-        await prisma.invoice.create({
-            data: invoiceToSend,
-        })
-        return NextResponse.json({ message: 'Invoice was created!' })
+        try {
+            const res = await prisma.invoice.create({
+                data: invoiceToSend,
+            })
+            if (res) {
+                return NextResponse.json({ status: 200 })
+            }
+        } catch (err) {
+            return NextResponse.json({
+                error: 'Failed while fetching invoices',
+            })
+        }
     }
 }

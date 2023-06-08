@@ -1,10 +1,10 @@
 import InvoiceItem from '@/components/organisms/InvoiceItem'
 import EmptyInvoiceTemplate from '@/components/templates/EmptyInvoiceTemplate'
-import { Invoice } from '@prisma/client'
 import React from 'react'
+import { dashboardInvoice } from '../../../../types/invoice'
 
 type InvoicesLayoutProps = {
-    invoices: Invoice[]
+    invoices: dashboardInvoice[]
 }
 
 const InvoicesLayout: React.FC<InvoicesLayoutProps> = ({ invoices }) => {

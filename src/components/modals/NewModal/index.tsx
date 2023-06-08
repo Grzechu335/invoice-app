@@ -3,12 +3,10 @@ import CustomButton from '@/components/atoms/CustomButton'
 import Form from '@/components/organisms/Form'
 import useModalContext from '@/hooks/useModalContext'
 import { useRouter } from 'next/navigation'
-import React, { useEffect } from 'react'
+import React, { BaseSyntheticEvent, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { FormData } from '../../../../types/form'
 import { newInvoice } from '../../../../types/invoice'
-
-export const dynamic = 'force-dynamic'
 
 const NewModal: React.FC = () => {
     const router = useRouter()
@@ -48,12 +46,17 @@ const NewModal: React.FC = () => {
         }
     })
 
-    const onSubmit = form.handleSubmit(async (data, event) => {
+    const onSubmit = async (
+        data: FormData,
+        event: BaseSyntheticEvent<object, any, any> | undefined
+    ) => {
+        event?.preventDefault()
         // @ts-ignore
         const value: 'new' | 'draft' = event?.nativeEvent.submitter.value
         const newInvoice: newInvoice = {
             ...data,
         }
+        console.log('Jestem przed funkcja')
         await fetch('/api/createInvoice', {
             headers: {
                 'Content-Type': 'application/json',
@@ -64,10 +67,10 @@ const NewModal: React.FC = () => {
             }),
             method: 'POST',
         })
-        router.push('/')
         closeAllModals()
         router.refresh()
-    })
+        router.push('/')
+    }
 
     return (
         <div
@@ -80,7 +83,7 @@ const NewModal: React.FC = () => {
             >
                 <form
                     id="newInvoiceForm"
-                    onSubmit={() => void onSubmit()}
+                    onSubmit={form.handleSubmit(onSubmit)}
                     className="p-6 md:p-14 md:pb-0"
                 >
                     {form && <Form form={form} />}

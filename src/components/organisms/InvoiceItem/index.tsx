@@ -1,12 +1,12 @@
 'use client'
-import React from 'react'
 import InvoiceStatus from '@/components/molecules/InvoiceStatus'
-import currencyFormatter from '../../../../utils/currencyFormatter'
 import { useRouter } from 'next/navigation'
-import { Invoice } from '@prisma/client'
+import React from 'react'
+import { dashboardInvoice } from '../../../../types/invoice'
+import currencyFormatter from '../../../../utils/currencyFormatter'
 import dateFormatter from '../../../../utils/dateFormatter'
 
-const InvoiceItem: React.FC<Invoice> = ({
+const InvoiceItem: React.FC<dashboardInvoice> = ({
     id,
     clientName,
     status,
@@ -36,7 +36,6 @@ const InvoiceItem: React.FC<Invoice> = ({
             <p className="flex items-center justify-start font-bold text-black md:justify-end dark:text-white grid-in-total">
                 {currencyFormatter(total)}
             </p>
-            {/* @ts-ignore */}
             <InvoiceStatus status={status} />
         </div>
     )

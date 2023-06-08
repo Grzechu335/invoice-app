@@ -29,6 +29,7 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
         name: 'items',
         rules: {
             required: 'Please append at least 1 item',
+            validate: {},
         },
     })
     useDidMountEffect(() => {
@@ -235,13 +236,15 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                 </div>
                 <div className="relative grid gap-10 md:gap-4">
                     {fields.map(({ id }, idx) => (
-                        <FormItem
-                            key={id}
-                            idx={idx}
-                            remove={remove}
-                            register={register}
-                            control={control}
-                        />
+                        <React.Fragment key={id}>
+                            <FormItem
+                                idx={idx}
+                                remove={remove}
+                                register={register}
+                                control={control}
+                                errors={errors}
+                            />
+                        </React.Fragment>
                     ))}
                     {errors.items?.root?.message && (
                         <span className="absolute bottom-0 error">

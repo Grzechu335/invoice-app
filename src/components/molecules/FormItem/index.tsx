@@ -1,10 +1,11 @@
 'use client'
 import { CustomInput } from '@/components/atoms/CustomInput'
 import Image from 'next/image'
-import React from 'react'
 import DeleteIcon from 'public/assets/icon-delete.svg'
+import React from 'react'
 import {
     Control,
+    FieldErrors,
     UseFieldArrayRemove,
     UseFormRegister,
     useWatch,
@@ -16,6 +17,7 @@ interface FormItemProps {
     remove: UseFieldArrayRemove
     register: UseFormRegister<FormData>
     control: Control<FormData, any>
+    errors?: FieldErrors<FormData>
 }
 
 const FormItem: React.FC<FormItemProps> = ({
@@ -23,6 +25,7 @@ const FormItem: React.FC<FormItemProps> = ({
     remove,
     register,
     control,
+    errors,
 }) => {
     const { items } = useWatch({ control })
     const { price, quantity } = items![idx]
@@ -35,9 +38,11 @@ const FormItem: React.FC<FormItemProps> = ({
                         message: 'Field cannot be empty',
                     },
                 })}
+                isFieldArray
                 labelOnSmallDevices
                 label="Item name"
                 className="col-span-full md:col-span-4"
+                error={errors?.items?.[idx]?.name}
             />
             <CustomInput
                 {...register(`items.${idx}.quantity`, {
@@ -45,11 +50,17 @@ const FormItem: React.FC<FormItemProps> = ({
                         value: true,
                         message: 'Field cannot be empty',
                     },
+                    pattern: {
+                        value: /^\d+$/,
+                        message: 'NaN',
+                    },
                 })}
                 type="number"
+                isFieldArray
                 labelOnSmallDevices
                 label="Qty."
                 className="col-span-3 md:col-span-2"
+                error={errors?.items?.[idx]?.quantity}
             />
             <CustomInput
                 {...register(`items.${idx}.price`, {
@@ -58,15 +69,17 @@ const FormItem: React.FC<FormItemProps> = ({
                         message: 'Field cannot be empty',
                     },
                 })}
+                isFieldArray
                 type="number"
                 labelOnSmallDevices
                 label="Price"
                 className="col-span-4 md:col-span-2"
+                error={errors?.items?.[idx]?.price}
             />
             <CustomInput
                 value={
-                    typeof price === 'number' && typeof quantity === 'number'
-                        ? (price * quantity).toFixed(2)
+                    (Number(price) * Number(quantity)).toString() !== 'NaN'
+                        ? (Number(price) * Number(quantity)).toFixed(2)
                         : ''
                 }
                 labelOnSmallDevices

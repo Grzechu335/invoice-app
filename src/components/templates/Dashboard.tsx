@@ -1,12 +1,12 @@
 'use client'
 import useFilterContext from '@/hooks/useFilterContext'
-import { Invoice } from '@prisma/client'
 import React from 'react'
+import { dashboardInvoice } from '../../../types/invoice'
 import InvoicesLayout from '../layouts/InvoicesLayout'
 import InvoicesNavigation from '../organisms/InvoicesNavigation'
 
 type DashboardProps = {
-    invoices: Invoice[]
+    invoices: dashboardInvoice[]
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ invoices }) => {

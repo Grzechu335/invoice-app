@@ -1,5 +1,3 @@
-import { Item } from './invoice'
-
 export interface FormData {
     senderAddress: Address
     clientAddress: Address
@@ -11,6 +9,11 @@ export interface FormData {
     paymentTerms: string
 }
 
+interface Item {
+    name: string
+    quantity: number
+    price: number
+}
 interface Address {
     street: string
     city: string

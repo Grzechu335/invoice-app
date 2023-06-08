@@ -6,3 +6,8 @@ export type newInvoice = Omit<
 >
 
 export type updatedInvoice = Omit<Invoice, 'paymentDue'>
+
+export type dashboardInvoice = Pick<
+    Invoice,
+    'id' | 'clientName' | 'status' | 'paymentDue' | 'items'
+>

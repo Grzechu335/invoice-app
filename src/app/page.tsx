@@ -15,8 +15,17 @@ export default async function Home() {
         where: {
             authorId: session.user.id,
         },
+        select: {
+            id: true,
+            clientName: true,
+            status: true,
+            paymentDue: true,
+            items: true,
+        },
+        orderBy: {
+            createdAt: 'asc',
+        },
     })
-
     return (
         <>
             <Dashboard invoices={invoices} />

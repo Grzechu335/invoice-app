@@ -8,6 +8,7 @@ interface CustomInputProps extends HTMLAttributes<HTMLInputElement> {
     value?: string
     type?: HTMLInputTypeAttribute
     error?: FieldError
+    isFieldArray?: boolean
 }
 
 export const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
@@ -20,11 +21,12 @@ export const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             value,
             type = 'text',
             error,
+            isFieldArray = false,
             ...rest
         } = props
         return (
             <label className={`${className} relative`}>
-                {error && (
+                {error && !isFieldArray && (
                     <span className="absolute top-0 right-0 error">
                         {error.message}
                     </span>
@@ -42,6 +44,10 @@ export const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
                         disabled
                             ? 'border-none text-color-6 px-0 dark:bg-color-12'
                             : 'dark:bg-color-3 px-5'
+                    } ${
+                        (isFieldArray && error) || error
+                            ? '!border-color-9'
+                            : ''
                     } `}
                     disabled={disabled}
                     {...rest}
