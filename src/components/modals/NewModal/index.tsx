@@ -63,7 +63,8 @@ const NewModal: React.FC = () => {
             method: 'POST',
         })
         closeAllModals()
-        router.refresh()
+        router.push('/')
+        // router.refresh()
     })
 
     return (
