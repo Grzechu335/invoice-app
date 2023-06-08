@@ -15,10 +15,12 @@ const InvoicePersonalData: React.FC<Invoice> = ({
     return (
         <div className="grid md:grid-cols-4 md:grid-rows-3 gap-2 md:gap-4 grid-cols-2 grid-rows-[1fr_2fr_1fr_1fr_1fr] grid-areas-invoiceDetailsSmall md:grid-areas-invoiceDetailsWide">
             <div className="flex flex-col space-y-2 grid-in-id">
-                <p className="text-color-8 dark:text-[#fff] heading-sm">
-                    <span className="text-color-6">#</span>
-                    {id}
-                </p>
+                <div className="w-[100px]">
+                    <p className="text-color-8 dark:text-[#fff] heading-sm truncate">
+                        <span className="mr-1 text-color-6">#</span>
+                        <span className="">{id}</span>
+                    </p>
+                </div>
                 <p className="text-color-7 dark:text-color-5 body-variant">
                     {description}
                 </p>
