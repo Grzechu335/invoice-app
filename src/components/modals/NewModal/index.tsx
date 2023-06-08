@@ -77,7 +77,7 @@ const NewModal: React.FC = () => {
             >
                 <form
                     id="newInvoiceForm"
-                    onSubmit={onSubmit}
+                    onSubmit={() => void onSubmit()}
                     className="p-6 md:p-14 md:pb-0"
                 >
                     {form && <Form form={form} />}

@@ -248,7 +248,8 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                 </div>
                 <div>
                     <CustomButton
-                        onClick={() => {
+                        onClick={(e) => {
+                            e.preventDefault()
                             append({
                                 name: 'Some item',
                                 price: 1,

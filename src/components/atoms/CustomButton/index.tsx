@@ -19,7 +19,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     className,
     onClick,
     smallFont = false,
-    submit,
+    submit = false,
     id,
     value,
 }) => {
