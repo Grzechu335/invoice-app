@@ -136,6 +136,10 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                                 value: true,
                                 message: 'Field cannot be empty',
                             },
+                            pattern: {
+                                value: /[a - z0 - 9!#$ %& '*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&' * +/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+                                message: 'Wrong email address',
+                            },
                         })}
                         label="Client's Email"
                         className="grid-in-clientEmail"
