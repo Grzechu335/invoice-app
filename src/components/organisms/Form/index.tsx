@@ -201,6 +201,7 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                             value={value}
                             label="Invoice Date"
                             className="md:col-span-1"
+                            disabled={invoice ? true : false}
                         />
                     )}
                 />
