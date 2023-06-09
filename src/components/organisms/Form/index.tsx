@@ -11,6 +11,7 @@ import { Controller, UseFormReturn, useFieldArray } from 'react-hook-form'
 import { FormData } from '../../../../types/form'
 import CustomDatePicker from '../CustomDatePicker'
 import CustomSelect from '../CustomSelect'
+import emailRegExp from '../../../../utils/emailRegExp'
 type FormProps = {
     invoice?: Invoice
     form: UseFormReturn<FormData, any, undefined>
@@ -137,7 +138,7 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                                 message: 'Field cannot be empty',
                             },
                             pattern: {
-                                value: /[a - z0 - 9!#$ %& '*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&' * +/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+                                value: emailRegExp,
                                 message: 'Wrong email address',
                             },
                         })}
