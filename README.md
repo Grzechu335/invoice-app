@@ -60,7 +60,7 @@ NEXTAUTH_SECRET = '[NextAuth Secret Key]'
 DATABASE_URL = '[Supabase Database URL]'
 ```
 
--   How get Google ID and Google Secret and setup GoogleCloud and URI [here][googleenvinstruction]
+-   How get Google ID, Google Secret, setup GoogleCloud and URI [here][googleenvinstruction]
 -   How get NextAuth Secret [here][nextauthsecretinstruction]
 -   How get Database URL [here][databaseurlinstruction]
 
