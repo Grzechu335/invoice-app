@@ -56,7 +56,6 @@ const NewModal: React.FC = () => {
         const newInvoice: newInvoice = {
             ...data,
         }
-        console.log('Jestem przed funkcja')
         await fetch('/api/createInvoice', {
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +68,6 @@ const NewModal: React.FC = () => {
         })
         closeAllModals()
         router.refresh()
-        router.push('/')
     }
 
     return (

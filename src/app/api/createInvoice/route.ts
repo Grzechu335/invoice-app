@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
             }
         } catch (err) {
             return NextResponse.json({
+                status: 404,
                 error: 'Failed while fetching invoices',
             })
         }
