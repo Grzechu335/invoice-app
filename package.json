@@ -44,6 +44,7 @@
     "devDependencies": {
         "@hookform/devtools": "^4.3.1",
         "@savvywombat/tailwindcss-grid-areas": "^3.0.1",
-        "prisma": "^4.15.0"
+        "prisma": "^4.15.0",
+        "react-loader-spinner": "^5.3.4"
     }
 }
