@@ -13,8 +13,16 @@ const GoBackButton: React.FC<GoBackButtonProps> = ({ className, onClick }) => {
     const router = useRouter()
     return (
         <button
+            type="button"
             className={`heading-sm-variant text-color-8 dark:text-[#fff] flex items-center space-x-[22px] ${className}`}
-            onClick={onClick ? onClick : () => router.back()}
+            onClick={
+                onClick
+                    ? onClick
+                    : (e) => {
+                          e.preventDefault()
+                          router.back()
+                      }
+            }
         >
             <Image
                 src={Arrow}
