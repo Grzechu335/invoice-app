@@ -16,7 +16,7 @@ const InvoicesLayout: React.FC<InvoicesLayoutProps> = ({ invoices }) => {
             transition={{
                 duration: 0.1,
             }}
-            className="xl:pt-[64px] md:pt-[55px] pt-[32px] flex flex-col space-y-[16px] relative -z-10"
+            className="xl:pt-[64px] md:pt-[55px] pt-[32px] flex flex-col space-y-[16px]"
         >
             {invoices.map((invoice) => (
                 <InvoiceItem

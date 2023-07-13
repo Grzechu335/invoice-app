@@ -26,7 +26,7 @@ const FilterInvoice: React.FC = () => {
                 />
             </button>
             {open && (
-                <div className="absolute bg-white dark:bg-color-4 shadow-lg rounded-[8px] top-[55px] left-0 w-[300%] md:w-[150%] transform translate-x-[-25%] p-6 heading-sm-variant grid gap-4">
+                <div className="absolute z-[999] bg-white dark:bg-color-4 shadow-lg rounded-[8px] top-[55px] left-0 w-[300%] md:w-[150%] transform translate-x-[-25%] p-6 heading-sm-variant grid gap-4">
                     <label className="flex space-x-[13px] items-center">
                         <input
                             type="checkbox"
