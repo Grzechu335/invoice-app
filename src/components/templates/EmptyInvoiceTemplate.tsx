@@ -4,21 +4,23 @@ import emptyImage from 'public/assets/illustration-empty.svg'
 
 type Props = {}
 
-const EmptyInvoiceTemplate = (props: Props) => {
+const EmptyInvoiceTemplate = () => {
     return (
-        <div className="fixed inset-0 grid place-content-center mx-auto gap-[66px]">
-            <Image
-                src={emptyImage}
-                alt="no invoices image"
-                className="mx-auto"
-            />
-            <div className="flex flex-col space-y-6 text-center">
-                <h2 className="heading-md">There is nothing here</h2>
-                <p className="body-variant">
-                    {' '}
-                    Create an invoice by clicking the New Invoice button and get
-                    started
-                </p>
+        <div className="fixed inset-0 grid mx-auto place-content-center">
+            <div className="w-[200px] space-y-[66px] relative top-[72px] md:top-[80px] xl::top-0">
+                <Image
+                    src={emptyImage}
+                    alt="no invoices image"
+                    className="mx-auto"
+                />
+                <div className="flex flex-col space-y-6 text-center">
+                    <h2 className="heading-md">There is nothing here</h2>
+                    <p className="body-variant">
+                        {' '}
+                        Create an invoice by clicking the New Invoice button and
+                        get started
+                    </p>
+                </div>
             </div>
         </div>
     )
