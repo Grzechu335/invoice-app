@@ -8,6 +8,8 @@ import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { FormData } from '../../../../types/form'
 import { updatedInvoice } from '../../../../types/invoice'
+import { motion as m } from 'framer-motion'
+import modalsAnimationVariants from '../../../../utils/modalsAnimationVariants'
 
 type EditModalProps = {
     invoice: Invoice
@@ -71,7 +73,11 @@ const EditModal: React.FC<EditModalProps> = ({ invoice }) => {
             className="fixed top-0 left-0 w-screen h-screen bg-black/50"
             onClick={toggleEditModal}
         >
-            <div
+            <m.div
+                variants={modalsAnimationVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
                 onClick={(e) => e.stopPropagation()}
                 className="w-screen md:w-1/2 h-screen bg-white dark:bg-color-12 xl:pl-[103px] pt-[100px] md:pt-[140px] xl:pt-0 scrollbar-none overflow-y-scroll overflow-x-hidden"
             >
@@ -106,7 +112,7 @@ const EditModal: React.FC<EditModalProps> = ({ invoice }) => {
                         </div>
                     </div>
                 </form>
-            </div>
+            </m.div>
         </div>
     )
 }

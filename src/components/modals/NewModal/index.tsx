@@ -7,6 +7,8 @@ import React, { BaseSyntheticEvent, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { FormData } from '../../../../types/form'
 import { newInvoice } from '../../../../types/invoice'
+import { motion as m } from 'framer-motion'
+import modalsAnimationVariants from '../../../../utils/modalsAnimationVariants'
 
 const NewModal: React.FC = () => {
     const router = useRouter()
@@ -75,7 +77,11 @@ const NewModal: React.FC = () => {
             className="fixed top-0 bottom-0 left-0 right-0 w-screen h-screen bg-black/50"
             onClick={toggleNewModal}
         >
-            <div
+            <m.div
+                variants={modalsAnimationVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
                 onClick={(e) => e.stopPropagation()}
                 className="w-screen md:w-1/2 h-screen bg-white dark:bg-color-12 xl:pl-[103px] pt-[100px] md:pt-[140px] xl:pt-0 scrollbar-none overflow-y-scroll overflow-x-hidden"
             >
@@ -116,7 +122,7 @@ const NewModal: React.FC = () => {
                         </div>
                     </div>
                 </form>
-            </div>
+            </m.div>
         </div>
     )
 }
