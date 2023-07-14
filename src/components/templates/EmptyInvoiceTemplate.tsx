@@ -6,7 +6,7 @@ type Props = {}
 
 const EmptyInvoiceTemplate = () => {
     return (
-        <div className="fixed inset-0 grid mx-auto bg-transparent place-content-center -z-10">
+        <div className="fixed inset-0 grid mx-auto bg-transparent place-content-center -z-10 bg-color-11 dark:bg-color-12">
             <div className="w-[200px] space-y-[66px] relative top-[72px] md:top-[80px] xl:top-0">
                 <Image
                     src={emptyImage}
@@ -17,8 +17,10 @@ const EmptyInvoiceTemplate = () => {
                     <h2 className="heading-md">There is nothing here</h2>
                     <p className="body-variant">
                         {' '}
-                        Create an invoice by clicking the New Invoice button and
-                        get started
+                        Create an invoice by clicking the <i>
+                            New Invoice
+                        </i>{' '}
+                        button and get started
                     </p>
                 </div>
             </div>
