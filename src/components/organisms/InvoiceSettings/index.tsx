@@ -13,10 +13,10 @@ type InvoiceSettingsProps = {
 const InvoiceSettings: React.FC<InvoiceSettingsProps> = ({ status, id }) => {
     const { toggleDeleteModal, toggleEditModal } = useModalContext()
     const router = useRouter()
-    const markAsPaid = async () => {
-        await fetch('/api/markAsPaid', {
+    const changeStatus = async () => {
+        await fetch('/api/changeStatus', {
             method: 'POST',
-            body: JSON.stringify({ id }),
+            body: JSON.stringify({ id, status }),
         })
         router.refresh()
     }
@@ -40,12 +40,21 @@ const InvoiceSettings: React.FC<InvoiceSettingsProps> = ({ status, id }) => {
                 >
                     Delete
                 </CustomButton>
-                <CustomButton
-                    onClick={markAsPaid}
-                    variant={2}
-                >
-                    Mark as Paid
-                </CustomButton>
+                {status === 'Pending' ? (
+                    <CustomButton
+                        onClick={changeStatus}
+                        variant={2}
+                    >
+                        Mark as Paid
+                    </CustomButton>
+                ) : status === 'Draft' ? (
+                    <CustomButton
+                        onClick={changeStatus}
+                        variant={2}
+                    >
+                        Mark as Pending
+                    </CustomButton>
+                ) : null}
             </div>
         </div>
     )
