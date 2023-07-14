@@ -12,6 +12,7 @@ type CustomSelectProps = {
     className?: string
     onChange: () => void
     value: string
+    disabled?: boolean
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -19,6 +20,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     className,
     onChange,
     value,
+    disabled = false,
 }) => {
     const values: Record<number, string> = {
         1: 'Net 1 Day',
@@ -32,6 +34,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
             <Select
                 defaultValue={value}
                 onValueChange={onChange}
+                disabled={disabled}
             >
                 <SelectTrigger className="w-full h-12 bg-white outline-none dark:bg-color-3 heading-sm-variant  rounded-[8px]">
                     <SelectValue />

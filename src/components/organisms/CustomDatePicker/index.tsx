@@ -3,7 +3,6 @@
 import * as React from 'react'
 import { format } from 'date-fns'
 import { Calendar as CalendarIcon } from 'lucide-react'
-
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/library/ui/button'
 import { Calendar } from '@/components/library/ui/calendar'
@@ -28,8 +27,6 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
     value,
     onChange,
 }) => {
-    // const [date, setDate] = React.useState<Date>()
-
     return (
         <div className={`${className}`}>
             <p className="mb-2 text-color-7 body-variant">{label}</p>

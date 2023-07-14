@@ -202,7 +202,12 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                             value={value}
                             label="Invoice Date"
                             className="md:col-span-1"
-                            disabled={invoice ? true : false}
+                            disabled={
+                                invoice?.status === 'Paid' ||
+                                invoice?.status === 'Pending'
+                                    ? true
+                                    : false
+                            }
                         />
                     )}
                 />
@@ -215,6 +220,7 @@ const Form: React.FC<FormProps> = ({ invoice, form }) => {
                             className="md:grid-span-1"
                             onChange={onChange}
                             value={value}
+                            disabled={invoice?.status === 'Paid' ? true : false}
                         />
                     )}
                 />
