@@ -103,7 +103,7 @@ const EditModal: React.FC<EditModalProps> = ({ invoice }) => {
                             </CustomButton>
                             <CustomButton
                                 id="editInvoiceForm"
-                                submit
+                                type="submit"
                                 variant={2}
                                 smallFont
                             >

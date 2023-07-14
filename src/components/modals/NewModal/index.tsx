@@ -104,7 +104,7 @@ const NewModal: React.FC = () => {
                             <CustomButton
                                 value="draft"
                                 id="newInvoiceForm"
-                                submit
+                                type="submit"
                                 variant={4}
                                 smallFont
                             >
@@ -112,7 +112,7 @@ const NewModal: React.FC = () => {
                             </CustomButton>
                             <CustomButton
                                 id="newInvoiceForm"
-                                submit
+                                type="submit"
                                 value="new"
                                 variant={2}
                                 smallFont
